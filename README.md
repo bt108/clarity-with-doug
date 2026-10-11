@@ -16,28 +16,6 @@ Static Astro site for a relationship & life-clarity coach (Vedic + Western astro
 
 Live site is the source of truth — https://claritywithdoug.com
 
-### Re-capturing screenshots
-
-No headless browser is vendored in this repo, so re-capture manually
-after major visual changes:
-
-1. `bun install && cp .env.example .env && bun run build && bun run preview`
-2. Open `http://localhost:4321/` — screenshot → save as `public/screenshots/home-hero.png`
-3. Open `/services` → `public/screenshots/services.png`
-4. Open `/checkout?product=one-question` → `public/screenshots/checkout.png`
-5. Crop each to 1280×720 (top/first fold), keep each under 200KB, commit the PNGs and update the table above to embed them.
-
-Headless alternative (if Chromium/Playwright is available):
-
-```bash
-npx -y playwright screenshot --viewport-size=1440,900 --full-page \
-  http://localhost:4321/ public/screenshots/home-hero.png
-npx -y playwright screenshot --viewport-size=1440,900 --full-page \
-  http://localhost:4321/services public/screenshots/services.png
-npx -y playwright screenshot --viewport-size=1440,900 \
-  "http://localhost:4321/checkout?product=one-question" public/screenshots/checkout.png
-```
-
 ## Stack
 
 - **Astro 6** + TypeScript (static output, no backend)
@@ -95,8 +73,3 @@ Key flows:
 - Canonical URLs, per-page title/description, OG + Twitter cards, sitemap, `robots.txt`.
 - JSON-LD `Organization` / `WebSite` / `Person` graph in `Base.astro`; page-level `schema` prop for extras.
 - GA4-via-GTM `dataLayer` events: `cta_clicked`, `whatsapp_click`, `phone_click`, `email_click`, `form_submitted`, `begin_checkout`, `purchase`.
-
-## Release status
-
-- [x] Secrets moved to env (see `.env.example`) — no live keys in the working tree or history
-- [x] Screenshots captured into `public/screenshots/`
