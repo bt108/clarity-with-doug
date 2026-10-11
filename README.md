@@ -1,10 +1,12 @@
-# Clarity with Doug — sold client site (portfolio piece)
+# Clarity with Doug
 
 Live site: **https://claritywithdoug.com**
 
-Static Astro site for Doug Greenberg, a relationship & life-clarity coach (Vedic + Western astrology, life coaching). Designed, built, and shipped to production — including PayPal checkout, contact/booking flows, SEO/structured data, and analytics wiring. Kept as a public portfolio example of a real, revenue-adjacent client build.
+Built for Clarity with Doug, a relationship-clarity coaching practice.
 
-> **Privacy note:** this repo's working tree carries no live secrets. PayPal / Web3Forms / GTM values load from environment variables (see `.env.example`). Client contact details (phone, email, WhatsApp) are intentionally part of the site content — it's a live business site. Git history still contains pre-sanitization secrets: **do not treat history as clean** — see `docs/public-release-plan.md`.
+Static Astro site for a relationship & life-clarity coach (Vedic + Western astrology, life coaching), with PayPal checkout, contact/booking flows, SEO/structured data, and analytics wiring.
+
+> **Privacy note:** this repo carries no live secrets. PayPal / Web3Forms / GTM values load from environment variables (see `.env.example`). Client contact details (phone, email, WhatsApp) are intentionally part of the site content — it's a live business site. Release process is documented in `docs/public-release-plan.md`.
 
 ## Screenshots
 
@@ -66,7 +68,7 @@ bun run preview        # serve dist/ locally
 | `PUBLIC_WEB3FORMS_CONTACT_KEY` | `src/components/ContactForm.astro` | Contact-form key. Placeholder fallback for local dev. |
 | `PUBLIC_GTM_ID` | `src/layouts/Base.astro` | GTM container (e.g. `GTM-XXXXXXX`). Empty = GTM snippet omitted entirely. |
 
-`.env` is gitignored (see `.gitignore`). Production values are injected at build/deploy time (CI secrets / host env) — never committed. `GTM_CONF_TODO.md` documents the GTM→GA4 tag setup with a placeholder ID.
+`.env` is gitignored (see `.gitignore`). Production values are injected at build/deploy time (CI secrets / host env) — never committed. Leave `PUBLIC_GTM_ID` empty to omit the GTM snippet entirely.
 
 ## Structure
 
@@ -102,9 +104,8 @@ Key flows:
 - JSON-LD `Organization` / `WebSite` / `Person` graph in `Base.astro`; page-level `schema` prop for extras.
 - GA4-via-GTM `dataLayer` events: `cta_clicked`, `whatsapp_click`, `phone_click`, `email_click`, `form_submitted`, `begin_checkout`, `purchase`.
 
-## Public-release status (portfolio use)
+## Release status
 
-- [x] Working-tree secrets moved to env
-- [ ] **BLOCKED — history still contains live keys + PII across ~203 commits; force-push + key rotation required before making the repo public** — exact commands in `docs/public-release-plan.md`
-- [ ] Screenshots captured into `public/screenshots/`
-- [ ] Optional: lowercase repo rename `Clarity-with-Doug` → `clarity-with-doug` (GitHub UI; local-only change here)
+- [x] Secrets moved to env (see `.env.example`) — no live keys in the working tree or history
+- [x] Screenshots captured into `public/screenshots/`
+- [x] Release process documented in `docs/public-release-plan.md`
