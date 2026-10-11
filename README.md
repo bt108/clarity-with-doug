@@ -10,9 +10,9 @@ Static Astro site for a relationship & life-clarity coach (Vedic + Western astro
 
 | Page | Screenshot |
 |---|---|
-| Homepage hero | ![Homepage hero](public/screenshots/home-hero.png) |
-| Services | ![Services](public/screenshots/services.png) |
-| Checkout | ![Checkout](public/screenshots/checkout.png) |
+| Homepage hero | <img src="public/screenshots/home-hero.png" alt="Homepage hero" width="720"> |
+| Services | <img src="public/screenshots/services.png" alt="Services" width="720"> |
+| Checkout | <img src="public/screenshots/checkout.png" alt="Checkout" width="720"> |
 
 Live site is the source of truth — https://claritywithdoug.com
 
@@ -22,10 +22,10 @@ No headless browser is vendored in this repo, so re-capture manually
 after major visual changes:
 
 1. `bun install && cp .env.example .env && bun run build && bun run preview`
-2. Open `http://localhost:4321/` — full-page screenshot → save as `public/screenshots/home-hero.png`
+2. Open `http://localhost:4321/` — screenshot → save as `public/screenshots/home-hero.png`
 3. Open `/services` → `public/screenshots/services.png`
 4. Open `/checkout?product=one-question` → `public/screenshots/checkout.png`
-5. Commit the PNGs and update the table above to embed them.
+5. Crop each to 1280×720 (top/first fold), keep each under 200KB, commit the PNGs and update the table above to embed them.
 
 Headless alternative (if Chromium/Playwright is available):
 
