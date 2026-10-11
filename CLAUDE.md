@@ -48,7 +48,7 @@ Multi-section static site for Doug Greenberg — relationship & life clarity coa
 4. Paste template, update frontmatter (title, description, pubDate, tags)
 5. Set `draft: false`
 6. Write content in Markdown
-7. Commit to `main` → auto-deploys
+7. Commit to `main`
 
 ## Design Tokens
 

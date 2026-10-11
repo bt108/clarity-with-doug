@@ -89,12 +89,6 @@ Key flows:
 - `/contact` → WhatsApp deep-link (default) or Web3Forms email path with honeypot
 - Footer newsletter → `mailto:` compose (no backend)
 
-## Deploy
-
-- Push to `main` → `.github/workflows/deploy.yml` builds with Astro and FTP-deploys `dist/` to Hostinger (`/public_html/`). FTP credentials live in GitHub Secrets (clean — keep).
-- Set the four `PUBLIC_*` vars as build-time env in CI/hosting before going live; without them the site builds but PayPal/Web3Forms/GTM run on sandbox/placeholder/disabled behavior.
-- `astro.config.mjs`: `site: https://claritywithdoug.com`, sitemap excludes `/checkout`, `/astro` → `/services` redirect.
-
 ## Accessibility / SEO
 
 - Skip-to-content link, semantic landmarks (`header`/`main`/`footer`), labeled required fields, `aria-live` form status regions, focus-visible rings, honeypot `botcheck` (not CAPTCHA-gated).
