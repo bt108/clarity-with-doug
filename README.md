@@ -6,8 +6,6 @@ Built for Clarity with Doug, a relationship-clarity coaching practice.
 
 Static Astro site for a relationship & life-clarity coach (Vedic + Western astrology, life coaching), with PayPal checkout, contact/booking flows, SEO/structured data, and analytics wiring.
 
-> **Privacy note:** this repo carries no live secrets. PayPal / Web3Forms / GTM values load from environment variables (see `.env.example`). Client contact details (phone, email, WhatsApp) are intentionally part of the site content — it's a live business site. Release process is documented in `docs/public-release-plan.md`.
-
 ## Screenshots
 
 | Page | Screenshot |
@@ -108,4 +106,3 @@ Key flows:
 
 - [x] Secrets moved to env (see `.env.example`) — no live keys in the working tree or history
 - [x] Screenshots captured into `public/screenshots/`
-- [x] Release process documented in `docs/public-release-plan.md`
