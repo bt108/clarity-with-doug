@@ -39,12 +39,12 @@ bun run preview        # serve dist/ locally
 
 | Var | Used in | Notes |
 |---|---|---|
-| `PUBLIC_PAYPAL_CLIENT_ID` | `src/components/CheckoutForm.astro` | PayPal client ID. Falls back to `"sb"` (sandbox) when unset so local build works. |
-| `PUBLIC_WEB3FORMS_CHECKOUT_KEY` | `src/components/CheckoutForm.astro` | Order-notification key. Placeholder fallback for local dev. |
-| `PUBLIC_WEB3FORMS_CONTACT_KEY` | `src/components/ContactForm.astro` | Contact-form key. Placeholder fallback for local dev. |
-| `PUBLIC_GTM_ID` | `src/layouts/Base.astro` | GTM container (e.g. `GTM-XXXXXXX`). Empty = GTM snippet omitted entirely. |
+| `PUBLIC_PAYPAL_CLIENT_ID` | `src/components/CheckoutForm.astro` | Client ID; unset = `"sb"` sandbox fallback. |
+| `PUBLIC_WEB3FORMS_CHECKOUT_KEY` | `src/components/CheckoutForm.astro` | Order-notification key; placeholder fallback for local dev. |
+| `PUBLIC_WEB3FORMS_CONTACT_KEY` | `src/components/ContactForm.astro` | Contact-form key; placeholder fallback for local dev. |
+| `PUBLIC_GTM_ID` | `src/layouts/Base.astro` | Container ID (`GTM-XXXXXXX`); empty = GTM omitted. |
 
-`.env` is gitignored (see `.gitignore`). Production values are injected at build/deploy time (CI secrets / host env) — never committed. Leave `PUBLIC_GTM_ID` empty to omit the GTM snippet entirely.
+`.env` is gitignored; production values come from CI/host env, never committed. Empty `PUBLIC_GTM_ID` omits the GTM snippet.
 
 ## Structure
 
@@ -62,14 +62,15 @@ public/           favicon, og image, robots.txt, llms.txt, screenshots/
 
 Key flows:
 
-- `/services` → product cards link to `/checkout?product=<slug>`
-- `/checkout` → validates birth-details form → renders PayPal buttons → on capture, POSTs order to Web3Forms
-- `/contact` → WhatsApp deep-link (default) or Web3Forms email path with honeypot
-- Footer newsletter → `mailto:` compose (no backend)
+| Route | Behavior |
+|---|---|
+| `/services` | product cards → `/checkout?product=<slug>` |
+| `/checkout` | birth-details form → PayPal buttons → Web3Forms order email |
+| `/contact` | WhatsApp deep-link, or Web3Forms email with honeypot |
+| footer newsletter | `mailto:` compose (no backend) |
 
 ## Accessibility / SEO
 
-- Skip-to-content link, semantic landmarks (`header`/`main`/`footer`), labeled required fields, `aria-live` form status regions, focus-visible rings, honeypot `botcheck` (not CAPTCHA-gated).
-- Canonical URLs, per-page title/description, OG + Twitter cards, sitemap, `robots.txt`.
-- JSON-LD `Organization` / `WebSite` / `Person` graph in `Base.astro`; page-level `schema` prop for extras.
-- GA4-via-GTM `dataLayer` events: `cta_clicked`, `whatsapp_click`, `phone_click`, `email_click`, `form_submitted`, `begin_checkout`, `purchase`.
+- Skip-to-content link, semantic landmarks, labeled required fields, `aria-live` status regions, focus-visible rings, honeypot `botcheck` (no CAPTCHA).
+- Canonical URLs, per-page titles/descriptions, OG + Twitter cards, sitemap, `robots.txt`, JSON-LD graph.
+- GA4-via-GTM events: `cta_clicked`, `whatsapp_click`, `phone_click`, `email_click`, `form_submitted`, `begin_checkout`, `purchase`.
