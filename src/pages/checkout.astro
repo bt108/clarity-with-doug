@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import CheckoutForm from "../components/CheckoutForm.astro";
+import { ALL_OFFERS } from "../lib/offers";
+---
+
+<Base
+  title="Checkout — Doug Greenberg"
+  description="Complete your booking with Doug Greenberg."
+>
+  <section class="py-14 lg:py-20">
+    <div class="mx-auto max-w-2xl px-6 lg:px-10">
+      <CheckoutForm offers={ALL_OFFERS} />
+    </div>
+  </section>
+</Base>

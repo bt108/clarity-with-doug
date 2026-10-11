@@ -1,0 +1,146 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StickyContact from "../components/StickyContact.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  schema?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description = "Relationship and life clarity coaching with Doug Greenberg. Vedic & Western astrology, life coaching. St. Petersburg, FL.",
+  ogImage = "/og-default.jpg",
+  schema = [],
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://claritywithdoug.com");
+
+// GTM container ID comes from env (see .env.example). Empty = GTM disabled (local/dev).
+const gtmId = import.meta.env.PUBLIC_GTM_ID || "";
+
+const orgSchema = {
+  "@type": "Organization",
+  name: "Doug Greenberg | Relationship & Life Clarity",
+  url: "https://claritywithdoug.com",
+  logo: "https://claritywithdoug.com/favicon.svg",
+  sameAs: [
+    "https://wa.me/17273089422",
+  ],
+};
+
+const webSiteSchema = {
+  "@type": "WebSite",
+  name: "Doug Greenberg | Relationship & Life Clarity",
+  url: "https://claritywithdoug.com",
+};
+
+const personSchema = {
+  "@type": "Person",
+  name: "Doug Greenberg",
+  url: "https://claritywithdoug.com/about",
+  jobTitle: "Relationship & Life Clarity Coach",
+  description: "Vedic astrologer, life coach, and guide to inner clarity with 25 years of practice and over 1,200 clients across six continents.",
+  knowsAbout: [
+    "Vedic Astrology",
+    "Western Astrology",
+    "Life Coaching",
+    "Relationship Counseling",
+    "NLP",
+    "Gestalt Therapy",
+  ],
+};
+
+const allSchema = [orgSchema, webSiteSchema, personSchema, ...schema];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Tag Manager (env: PUBLIC_GTM_ID; omitted when unset) -->
+    {gtmId && (
+    <script is:inline set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','${gtmId}');`} />
+    )}
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@graph": allSchema })} />
+  </head>
+  <body>
+    {gtmId && (
+    <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`} height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    )}
+
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:left-4 focus:top-4 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+    >
+      Skip to main content
+    </a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <StickyContact />
+
+    <!-- Global event tracking -->
+    <script is:inline>
+      (function () {
+        var dl = window.dataLayer || [];
+
+        // Track CTA clicks via event delegation
+        document.addEventListener("click", function (e) {
+          var link = e.target.closest("a[href], button[type='submit']");
+          if (!link) return;
+
+          var href = link.getAttribute("href") || "";
+          var text = (link.textContent || "").trim().substring(0, 80);
+          var section = "";
+          var closest = link.closest("section, header, footer");
+          if (closest) {
+            var heading = closest.querySelector("h1, h2, h3");
+            section = heading ? heading.textContent.trim().substring(0, 60) : (closest.tagName.toLowerCase());
+          }
+
+          // Outbound / contact link tracking
+          if (href.startsWith("https://wa.me")) {
+            dl.push({ event: "whatsapp_click", link_url: href, link_text: text, link_location: section });
+          } else if (href.startsWith("tel:")) {
+            dl.push({ event: "phone_click", link_url: href, link_text: text, link_location: section });
+          } else if (href.startsWith("mailto:")) {
+            dl.push({ event: "email_click", link_url: href, link_text: text, link_location: section });
+          }
+
+          // CTA button tracking (round buttons are CTAs on this site)
+          if (link.tagName === "A" && link.classList.contains("rounded-full")) {
+            dl.push({ event: "cta_clicked", button_text: text, button_url: href, button_location: section });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

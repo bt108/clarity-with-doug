@@ -1,0 +1,139 @@
+---
+const EMAIL = "contact@claritywithdoug.com";
+const WHATSAPP = "https://wa.me/17273089422";
+const SMS = "sms:+17273089422";
+const PHONE_DISPLAY = "+1 727-308-9422";
+
+const NAV = [
+  { label: "Services", href: "/services" },
+  { label: "About",    href: "/about" },
+  { label: "Blog",     href: "/blog" },
+  { label: "Contact",  href: "/contact" },
+];
+---
+
+<footer class="bg-cream">
+  <div class="mx-auto max-w-7xl px-6 py-14 lg:px-10">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+
+      <div>
+        <a href="/" class="flex items-center gap-3">
+          <span class="grid h-9 w-9 place-items-center rounded-full border border-gold text-gold">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            </svg>
+          </span>
+          <span class="leading-tight">
+            <span class="block font-serif text-lg font-semibold tracking-tight text-ink">Doug Greenberg</span>
+            <span class="block text-xs uppercase tracking-[0.18em] text-muted-foreground">
+              Relationship &amp; Life Clarity
+            </span>
+          </span>
+        </a>
+
+        <div class="mt-8 border-t border-border pt-8">
+          <p class="font-serif text-base italic leading-snug text-muted-foreground">
+            "I occasionally write something worth reading — on timing, relationships, and what I'm noticing in the work. Leave your email."
+          </p>
+          <p class="mt-2 text-xs uppercase tracking-[0.28em] text-gold">Doug Greenberg</p>
+
+          <div id="newsletter-wrapper">
+          <form id="newsletter-form" class="mt-5 flex flex-col gap-3 sm:flex-row">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              name="email"
+              required
+              placeholder="Your email address"
+              autocomplete="email"
+              class="rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:max-w-xs"
+            />
+            <button
+              type="submit"
+              class="shrink-0 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Keep me in the loop
+            </button>
+          </form>
+          <p id="newsletter-result" aria-live="polite" class="mt-3 hidden text-sm text-muted-foreground"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:flex lg:flex-col lg:justify-center lg:gap-6 lg:border-l lg:border-border lg:pl-16">
+        <div class="grid grid-cols-3 gap-3 lg:contents">
+          <a href={WHATSAPP} target="_blank" rel="noreferrer" class="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-background p-4 text-center lg:flex-row lg:gap-4 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:text-left">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-primary/10 group-hover:text-primary lg:h-10 lg:w-10">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            </span>
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-[0.18em] text-muted-foreground">WhatsApp</p>
+              <p class="mt-0.5 hidden text-sm font-medium text-foreground transition-colors group-hover:text-primary lg:block">{PHONE_DISPLAY}</p>
+            </div>
+          </a>
+
+          <a href={SMS} class="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-background p-4 text-center lg:flex-row lg:gap-4 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:text-left">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-primary/10 group-hover:text-primary lg:h-10 lg:w-10">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+            </span>
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-[0.12em] text-muted-foreground">Text</p>
+              <p class="mt-0.5 text-xs text-muted-foreground/80">texts only — no calls</p>
+              <p class="mt-0.5 hidden text-sm font-medium text-foreground transition-colors group-hover:text-primary lg:block">{PHONE_DISPLAY}</p>
+            </div>
+          </a>
+
+          <a href={`mailto:${EMAIL}`} class="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-background p-4 text-center lg:flex-row lg:gap-4 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:text-left">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-primary/10 group-hover:text-primary lg:h-10 lg:w-10">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </span>
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-[0.18em] text-muted-foreground">Email</p>
+              <p class="mt-0.5 hidden text-sm font-medium text-foreground transition-colors group-hover:text-primary lg:block">{EMAIL}</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="mt-3 text-center lg:mt-0 lg:pl-14 lg:text-left">
+          <span class="mb-2 block h-px w-8 bg-border mx-auto lg:mx-0"></span>
+          <p class="text-xs text-muted-foreground/80">Replies within 24 hours</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="border-t border-border">
+    <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-6 py-5 sm:flex-row sm:items-center lg:px-10">
+      <p class="text-xs text-muted-foreground/80">
+        &copy; {new Date().getFullYear()} Doug Greenberg | Relationship &amp; Life Clarity. All rights reserved.
+      </p>
+      <nav class="flex items-center gap-6" aria-label="Footer navigation">
+        {NAV.map((n) => (
+          <a href={n.href} class="py-1 text-xs text-muted-foreground/80 transition-colors hover:text-primary">
+            {n.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById("newsletter-form") as HTMLFormElement | null;
+  const result = document.getElementById("newsletter-result") as HTMLElement | null;
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "form_submitted", form_type: "newsletter", form_location: "footer" });
+    const href = `mailto:contact@claritywithdoug.com?subject=${encodeURIComponent("Add me to your notes list")}&body=${encodeURIComponent(`Hi Doug,\n\nPlease add me to your occasional notes.\n\nMy email: ${email}`)}`;
+    window.open(href);
+    form.hidden = true;
+    if (result) {
+      result.textContent = "Your email client should have opened — just hit send and Doug will add you.";
+      result.classList.remove("hidden");
+    }
+  });
+</script>

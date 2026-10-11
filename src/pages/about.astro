@@ -1,0 +1,253 @@
+---
+import Base from "../layouts/Base.astro";
+import dougHero from "../assets/doug.webp";
+import { SOLO_OFFERS } from "../lib/offers";
+
+const STATS = [
+  { value: "25",     label: "years of practice" },
+  { value: "1,200+", label: "clients helped" },
+  { value: "6",      label: "continents" },
+];
+
+const METHODS = [
+  {
+    num: "01",
+    title: "Vedic Astrology",
+    body: "Your chart reveals the patterns, timing, and forces shaping your life right now — with precision that surprises most people.",
+  },
+  {
+    num: "02",
+    title: "Transformational Reframing",
+    body: "The way you see a situation is often the situation. Reframing doesn't change the facts — it changes what the facts make possible.",
+  },
+  {
+    num: "03",
+    title: "Life Coaching",
+    body: "Turning insight into action. Concrete next steps, decision clarity, and the perspective to move forward with confidence.",
+  },
+];
+
+const CREDENTIALS = [
+  {
+    name: "Vedic & Western Astrology",
+    note: "Precise chart reading for relationships, timing, and what's driving your life right now.",
+  },
+  {
+    name: "Transformational Reframing",
+    note: "Shifting the story around a challenge — so the same situation opens options instead of closing them down.",
+  },
+  {
+    name: "Gestalt Therapy",
+    note: "Working with the whole person — body, mind, and present moment — not just the surface question.",
+  },
+  {
+    name: "NLP — Neural Linguistic Re-Programming",
+    note: "Reframing the internal language that keeps cycles repeating, even when you can see them clearly.",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "I'd been carrying the same question about my relationship for nearly two years — going in circles, unable to see it clearly. After one session with Doug I finally understood what was actually driving my confusion. That shift in perspective was everything. I stopped second-guessing myself and finally made the decision I'd been avoiding for two years.",
+    name: "Natalie",
+    location: "Odessa TX",
+  },
+  {
+    quote: "I came to Doug not knowing what to expect. Within the first 20 minutes he'd named something I'd never been able to articulate about my own patterns. Three months on, I've made decisions I'd been putting off for years — and the paralysis is gone.",
+    name: "James",
+    location: "London UK",
+  },
+];
+---
+
+<Base
+  title="About Doug Greenberg — Relationship & Life Clarity Coach"
+  description="25 years helping people find clarity in relationships and life decisions. Certified Vedic astrologer, Transformational Reframing practitioner, and life coach in St. Petersburg, FL."
+>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 paper-texture opacity-60" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+      <div class="grid items-end gap-12 lg:grid-cols-2">
+
+        <!-- Text -->
+        <div>
+          <p class="flex items-center gap-3 type-eyebrow">
+            <span class="h-px w-10 bg-gold"></span>
+            About Doug
+          </p>
+          <h1 class="mt-6 font-serif leading-[1.1] text-ink text-[clamp(2rem,5vw,3.75rem)] text-balance">
+            I didn't set out to become a clarity coach. I set out to find it myself.
+          </h1>
+          <p class="mt-6 type-body-lead max-w-md">
+            Relationship coach, Vedic astrologer, and guide to inner clarity — working with clients worldwide by WhatsApp and video.
+          </p>
+          <div class="mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-border pt-8">
+            {STATS.map((s) => (
+              <div>
+                <p class="font-serif text-4xl lg:text-5xl text-ink">{s.value}</p>
+                <p class="mt-0.5 text-xs uppercase tracking-[0.2em] text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Photo -->
+        <div class="lg:justify-self-end lg:w-[85%]">
+          <div class="overflow-hidden rounded-2xl border border-gold/40 shadow-[0_24px_64px_-12px_oklch(0.44_0.14_38/0.25)]">
+            <img
+              src={dougHero.src}
+              alt="Portrait of Doug Greenberg, relationship and life clarity coach"
+              width={800}
+              height={1000}
+              class="aspect-[4/5] w-full object-cover object-top"
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="bg-cream py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <p class="type-eyebrow">The work</p>
+      <div class="mt-10 grid gap-12 lg:grid-cols-12 lg:items-start">
+
+        <!-- Prose -->
+        <div class="space-y-6 lg:col-span-7">
+          <p class="type-body-lead">
+            For 25 years I've been sitting with people at the moments that matter most — when a relationship has reached its edge, when a decision feels impossible, when the same pattern keeps appearing no matter how much effort goes into changing it.
+          </p>
+          <p class="type-body">
+            My own life has been a long apprenticeship in inner transformation. That path led me to certifications in Vedic and Western astrology, Transformational Reframing, Gestalt therapy, and NLP — not as credentials to collect, but as tools I kept seeking because they actually worked. Each offers a different entry point into the same work: astrology reveals the pattern, reframing shifts the story around it, Gestalt grounds insight in the body, and NLP changes the language keeping it in place.
+          </p>
+          <p class="type-body">
+            What I've found, across more than 1,200 clients on six continents, is that clarity almost always comes faster than people expect. Not because the problems are simple — they rarely are — but because most people arrive already carrying the answer. They just need someone who can help them hear it.
+          </p>
+          <p class="type-body">
+            I work with clients worldwide by call and video. Sessions are unhurried conversations, and I read every message personally. If you're wondering whether this kind of work might be right for you, the best thing to do is reach out and tell me what's going on.
+          </p>
+        </div>
+
+        <!-- Pull quote -->
+        <aside class="lg:col-span-5 lg:sticky lg:top-28">
+          <blockquote class="border-l-2 border-gold pl-6">
+            <p class="font-serif text-2xl italic leading-snug text-ink lg:text-[1.65rem]">
+              "Most people arrive already carrying the answer."
+            </p>
+          </blockquote>
+          <p class="mt-5 pl-6 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            Doug Greenberg
+          </p>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How I work -->
+  <section class="py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <p class="type-eyebrow">The approach</p>
+      <h2 class="mt-4 type-section-heading sm:text-5xl">Three tools. One conversation.</h2>
+      <div class="mt-14 divide-y divide-border border-t border-border">
+        {METHODS.map((m) => (
+          <div class="grid items-start gap-4 py-8 sm:grid-cols-12 sm:gap-8">
+            <p class="font-serif text-3xl leading-none text-gold/35 sm:col-span-1">{m.num}</p>
+            <div class="sm:col-span-11 sm:grid sm:grid-cols-2 sm:gap-10">
+              <h3 class="font-serif text-2xl text-ink">{m.title}</h3>
+              <p class="mt-3 type-body sm:mt-0">{m.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="bg-cream py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <div class="grid gap-10 lg:grid-cols-12 lg:items-start">
+        <div class="lg:col-span-4">
+          <p class="type-eyebrow">Training</p>
+          <h2 class="mt-4 type-section-heading">The training behind the work.</h2>
+          <p class="mt-5 type-body">
+            I hold certifications across four disciplines — not as credentials to display, but because each one opens a different door. Together they form a single approach: reaching the level where real change happens.
+          </p>
+        </div>
+        <div class="lg:col-span-8 lg:pt-1">
+          <ul class="border-t border-border">
+            {CREDENTIALS.map((c) => (
+              <li class="border-b border-border py-5">
+                <div class="flex items-start justify-between gap-6">
+                  <span class="font-serif text-lg text-ink">{c.name}</span>
+                  <span class="mt-0.5 shrink-0 inline-flex items-center rounded-full border border-gold/40 bg-gold/10 px-2.5 py-0.5 text-xs uppercase tracking-[0.18em] text-gold">
+                    Certified
+                  </span>
+                </div>
+                <p class="mt-1.5 type-body-sm text-muted-foreground">{c.note}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <p class="type-eyebrow">What clients say</p>
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        {TESTIMONIALS.map((t) => (
+          <figure class="relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-[0_4px_24px_-8px_oklch(0.44_0.14_38/0.10)] lg:p-10">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute right-5 top-2 select-none font-serif text-[7rem] leading-none text-gold/[0.12]"
+            >"</span>
+            <blockquote class="relative font-serif text-lg italic leading-relaxed text-ink lg:text-xl">
+              {t.quote}
+            </blockquote>
+            <figcaption class="mt-7 flex items-center gap-4">
+              <span class="h-px w-10 shrink-0 bg-gold" aria-hidden="true"></span>
+              <div>
+                <p class="font-serif text-base text-primary">{t.name}</p>
+                <p class="mt-0.5 text-xs uppercase tracking-[0.22em] text-muted-foreground">{t.location}</p>
+              </div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="relative overflow-hidden bg-primary py-14 lg:py-16">
+    <div class="absolute inset-0 paper-texture opacity-50" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
+      <h2 class="font-serif text-3xl leading-tight text-primary-foreground sm:text-4xl">
+        Ready to begin?
+      </h2>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 rounded-full bg-primary-foreground px-7 py-3 text-base font-medium text-primary transition-colors hover:bg-primary-foreground/90"
+        >
+          See where to begin
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-7 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+        >
+          Tell Doug what's going on
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Base>

@@ -1,0 +1,22 @@
+node_modules/
+.astro/
+dist/
+dist-ssr/
+package-lock.json
+.env
+.env.*
+!.env.example
+.env.local
+
+# Tool/editor config
+.agent/
+.claude/
+.tanstack/
+.wrangler/
+
+# GitHub skill data (not project code)
+.github/prompts/
+
+
+# Superpowers docs
+docs/superpowers/

@@ -1,0 +1,141 @@
+---
+const currentPath = Astro.url.pathname;
+
+const NAV = [
+  { label: "Home",     href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "About",    href: "/about" },
+  { label: "Contact",  href: "/contact" },
+  { label: "Blog",     href: "/blog" },
+];
+---
+
+<header
+  id="site-header"
+  class="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur"
+>
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+    <a href="/" class="flex items-center gap-3">
+      <span class="grid h-9 w-9 place-items-center rounded-full border border-gold text-gold">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+        </svg>
+      </span>
+      <span class="leading-tight">
+        <span class="block font-serif text-lg font-semibold tracking-tight">Doug Greenberg</span>
+        <span class="block text-xs uppercase tracking-[0.18em] text-muted-foreground">
+          Relationship &amp; Life Clarity
+        </span>
+      </span>
+    </a>
+
+    <div class="hidden items-center gap-6 lg:flex">
+      <nav class="flex items-center gap-6" aria-label="Main navigation">
+        {NAV.map((n) => (
+          <a
+            href={n.href}
+            class={`rounded text-sm font-medium transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+              n.href === "/" ? (currentPath === "/" ? "text-primary" : "text-foreground/80") : (currentPath.startsWith(n.href) ? "text-primary" : "text-foreground/80")
+            }`}
+          >
+            {n.label}
+          </a>
+        ))}
+      </nav>
+      <a
+        href="/services"
+        class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+      >
+        See Services
+        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Hamburger button — icons swapped via JS -->
+    <button
+      id="menu-btn"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="menu-drawer"
+      class="lg:hidden"
+    >
+      <span id="menu-icon-open" aria-hidden="true">
+        <span class="block h-0.5 w-6 bg-foreground"></span>
+        <span class="mt-1.5 block h-0.5 w-6 bg-foreground"></span>
+        <span class="mt-1.5 block h-0.5 w-6 bg-foreground"></span>
+      </span>
+      <span id="menu-icon-close" class="hidden" aria-hidden="true">
+        <span class="relative block h-5 w-6">
+          <span class="absolute left-0 top-1/2 block h-0.5 w-6 -translate-y-1/2 rotate-45 bg-foreground"></span>
+          <span class="absolute left-0 top-1/2 block h-0.5 w-6 -translate-y-1/2 -rotate-45 bg-foreground"></span>
+        </span>
+      </span>
+    </button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div id="menu-drawer" role="navigation" aria-label="Mobile navigation" class="hidden border-t border-border lg:hidden">
+    <div class="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
+      {NAV.map((n) => (
+        <a
+          href={n.href}
+          class={`block rounded py-3 text-sm font-medium hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+            n.href === "/" ? (currentPath === "/" ? "text-primary" : "text-foreground/80") : (currentPath.startsWith(n.href) ? "text-primary" : "text-foreground/80")
+          }`}
+        >
+          {n.label}
+        </a>
+      ))}
+      <a
+        href="/services"
+        class="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground"
+      >
+        See Services
+        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Header height → CSS var for scroll-padding-top
+  const header = document.getElementById("site-header");
+  if (header) {
+    const sync = () =>
+      document.documentElement.style.setProperty(
+        "--header-h",
+        `${header.getBoundingClientRect().height}px`,
+      );
+    sync();
+    const ro = new ResizeObserver(sync);
+    ro.observe(header);
+    window.addEventListener("pagehide", () => ro.disconnect(), { once: true });
+  }
+
+  // Mobile menu toggle
+  const btn = document.getElementById("menu-btn");
+  const drawer = document.getElementById("menu-drawer");
+  const iconOpen = document.getElementById("menu-icon-open");
+  const iconClose = document.getElementById("menu-icon-close");
+
+  if (btn && drawer && iconOpen && iconClose) {
+    btn.addEventListener("click", () => {
+      const isOpen = !drawer.classList.contains("hidden");
+      drawer.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      iconOpen.classList.toggle("hidden", !isOpen);
+      iconClose.classList.toggle("hidden", isOpen);
+    });
+
+    // Close drawer when a link is clicked
+    drawer.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        drawer.classList.add("hidden");
+        btn.setAttribute("aria-expanded", "false");
+        iconOpen.classList.remove("hidden");
+        iconClose.classList.add("hidden");
+      });
+    });
+  }
+</script>

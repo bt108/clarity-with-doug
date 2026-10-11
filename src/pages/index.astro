@@ -1,0 +1,245 @@
+---
+import Base from "../layouts/Base.astro";
+import dougHero from "../assets/doug.webp";
+
+const WHATSAPP = "https://wa.me/17273089422";
+
+const PROBLEMS = [
+  {
+    eyebrow: "Relationships",
+    pain: "My relationship feels broken.",
+    outcome: "Understand what's really happening between you — and whether it can be healed.",
+    cta: "Understand Your Relationship",
+    prefill: "Hi Doug,\n\nMy relationship feels broken right now, and I've been going back and forth on it for longer than I'd like to admit. I can't quite see what's really happening between us — or whether there's a way to heal it.\n\nHere's a bit more about where I'm at:\n\n",
+  },
+  {
+    eyebrow: "Life direction",
+    pain: "I don't know which direction to take.",
+    outcome: "Get clarity on your path, your timing, and the decision in front of you.",
+    cta: "Find Your Direction",
+    prefill: "Hi Doug,\n\nI'm at a point where I genuinely don't know which direction to take. There's a decision in front of me and no matter how much I think it over, I can't get clear on what the right path is — or when to move.\n\nHere's a bit more about where I'm at:\n\n",
+  },
+  {
+    eyebrow: "Patterns & blocks",
+    pain: "I keep repeating the same patterns.",
+    outcome: "Uncover the subconscious beliefs driving the cycle — and break free from them.",
+    cta: "Break the Pattern",
+    prefill: "Hi Doug,\n\nI keep ending up in the same place. I can see the pattern — in my relationships, in the choices I make — but I can't seem to break out of it, no matter what I try.\n\nHere's a bit more about where I'm at:\n\n",
+  },
+  {
+    eyebrow: "Future & timing",
+    pain: "I need to know what's ahead.",
+    outcome: "Use your chart to understand what's coming and when the right moment is to act.",
+    cta: "See What's Ahead",
+    prefill: "Hi Doug,\n\nI'm at a point where I really need to understand what's coming. There's a decision ahead of me and I don't know whether to wait or act — or what I should even be preparing for.\n\nHere's a bit more about where I'm at:\n\n",
+  },
+];
+---
+
+<Base
+  title="Doug Greenberg — Relationship & Life Clarity"
+  description="Feeling stuck in a relationship or life decision? Doug Greenberg offers Vedic astrology readings and clarity coaching — 25 years, 1,200+ clients, six continents. Readings start at $20."
+>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 paper-texture opacity-60" aria-hidden="true"></div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 lg:grid-cols-12 lg:gap-10 lg:px-10 lg:py-20">
+      <div class="lg:col-span-7">
+        <p class="flex items-center gap-3 type-eyebrow">
+          <span class="h-px w-10 bg-gold"></span>
+          Clarity in relationships &amp; life decisions
+        </p>
+        <div class="mt-6 lg:block">
+          <div
+            style="width: max(6rem, 28vw)"
+            class="float-right ml-4 mb-3 overflow-hidden rounded-2xl border border-gold/40 shadow-[0_16px_40px_-12px_oklch(0.44_0.14_38/0.35)] lg:hidden"
+          >
+            <img
+              src={dougHero.src}
+              alt="Portrait of Doug Greenberg, relationship and life clarity coach"
+              width={480}
+              height={720}
+              class="aspect-[2/3] w-full object-cover object-top"
+            />
+          </div>
+          <h1 class="font-serif leading-[1.05] text-ink text-balance text-[clamp(1.5rem,5.5vw,4.5rem)]">
+            I've spent 25 years helping people hear what they already know.
+          </h1>
+          <p class="mt-5 type-body-lead">
+            When you feel stuck, overwhelmed, or uncertain, I help you understand what's really happening — so you can move forward with confidence.
+          </p>
+        </div>
+        <div class="clear-right mt-9 flex flex-wrap items-center gap-4">
+          <a
+            href="/services"
+            class="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Find your starting point
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 rounded-full border border-gold/60 bg-gold/10 px-7 py-3 text-base font-medium text-primary transition-colors hover:bg-gold/20"
+          >
+            Tell Doug what's going on
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="relative hidden lg:col-span-5 lg:block">
+        <div class="absolute -inset-6 rounded-[2rem] bg-gold/10 blur-2xl" aria-hidden="true"></div>
+        <div class="relative overflow-hidden rounded-[2rem] border border-gold/40 shadow-[0_30px_80px_-30px_oklch(0.44_0.14_38/0.4)]">
+          <img
+            src={dougHero.src}
+            alt="Portrait of Doug Greenberg, relationship and life clarity coach"
+            width={1024}
+            height={1280}
+            class="h-full w-full object-cover object-top"
+          />
+        </div>
+        <div class="absolute -bottom-6 -left-6 rounded-2xl border border-gold/40 bg-background px-5 py-4 shadow-lg">
+          <p class="font-serif text-sm italic text-muted-foreground">
+            "One honest conversation can change how you see everything."
+          </p>
+          <p class="mt-2 text-xs uppercase tracking-wider text-gold">Doug Greenberg</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problems -->
+  <section class="relative bg-cream py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="type-section-heading sm:text-5xl">
+          Whatever brought you here, I've seen it before.
+        </h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+        {PROBLEMS.map((p) => (
+          <article class="group relative flex flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-gold hover:shadow-xl has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-primary has-[a:focus-visible]:ring-offset-2">
+            <span class="inline-flex w-fit items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs uppercase tracking-wider text-primary">
+              {p.eyebrow}
+            </span>
+            <h3 class="mt-5 font-serif text-2xl leading-snug text-ink">{p.pain}</h3>
+            <p class="mt-3 flex-1 type-body-sm">{p.outcome}</p>
+            <a
+              href="/services"
+              class="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary after:absolute after:inset-0 hover:underline focus-visible:outline-none"
+            >
+              {p.cta}
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <p class="mx-auto mt-10 max-w-2xl text-center font-serif italic text-base leading-relaxed text-muted-foreground">
+        People often find their way here feeling anxious and overwhelmed, exhausted by burnout, stuck in grief or a major life change, or simply like they've lost the thread of who they are. You don't need a formed question to arrive — just the sense that something needs to shift.
+      </p>
+    </div>
+  </section>
+
+  <!-- About strip -->
+  <section class="py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <div class="mx-auto grid max-w-4xl gap-10 lg:grid-cols-2 lg:items-center">
+        <div>
+          <p class="type-eyebrow">The person behind the work</p>
+          <h2 class="mt-4 font-serif text-3xl leading-tight text-ink sm:text-4xl">
+            Astrology, coaching, and 25 years of honest conversations.
+          </h2>
+          <p class="mt-5 type-body">
+            For 25 years I've sat with people at the moments that matter most — relationship crossroads, impossible decisions, patterns that keep repeating no matter how hard you try. The work draws on Vedic astrology, life coaching, and perspective reframing — different tools, one purpose: helping you hear what you already know.
+          </p>
+          <a
+            href="/about"
+            class="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+          >
+            Read my story
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <figure class="border-l-2 border-gold pl-6">
+          <blockquote class="font-serif text-2xl italic leading-snug text-ink lg:text-3xl">
+            Over 1,200 clients across six continents — and every session is still one honest conversation.
+          </blockquote>
+          <p class="mt-4 pl-0 text-xs uppercase tracking-[0.2em] text-muted-foreground">— Doug Greenberg</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-cream py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <p class="type-eyebrow text-center">What others found</p>
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+
+        <!-- Natalie -->
+        <figure class="relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-[0_4px_24px_-8px_oklch(0.44_0.14_38/0.10)] lg:p-10">
+          <span aria-hidden="true" class="pointer-events-none absolute right-5 top-2 select-none font-serif text-[7rem] leading-none text-gold/[0.12]">"</span>
+          <blockquote class="relative font-serif text-lg italic leading-relaxed text-ink lg:text-xl">
+            "I'd been carrying the same question about my relationship for nearly two years — going in circles, unable to see it clearly. After one session with Doug I finally understood what was actually driving my confusion. That shift in perspective was everything. I stopped second-guessing myself and finally made the decision I'd been avoiding for two years."
+          </blockquote>
+          <figcaption class="mt-7 flex items-center gap-4">
+            <span class="h-px w-10 shrink-0 bg-gold" aria-hidden="true"></span>
+            <div>
+              <p class="font-serif text-base text-primary">Natalie</p>
+              <p class="mt-0.5 text-xs uppercase tracking-[0.22em] text-muted-foreground">Odessa, TX</p>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- James -->
+        <figure class="relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-[0_4px_24px_-8px_oklch(0.44_0.14_38/0.10)] lg:p-10">
+          <span aria-hidden="true" class="pointer-events-none absolute right-5 top-2 select-none font-serif text-[7rem] leading-none text-gold/[0.12]">"</span>
+          <blockquote class="relative font-serif text-lg italic leading-relaxed text-ink lg:text-xl">
+            "I came to Doug not knowing what to expect. Within the first 20 minutes he'd named something I'd never been able to articulate about my own patterns. Three months on, I've made decisions I'd been putting off for years — and the paralysis is gone."
+          </blockquote>
+          <figcaption class="mt-7 flex items-center gap-4">
+            <span class="h-px w-10 shrink-0 bg-gold" aria-hidden="true"></span>
+            <div>
+              <p class="font-serif text-base text-primary">James</p>
+              <p class="mt-0.5 text-xs uppercase tracking-[0.22em] text-muted-foreground">London, UK</p>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA strip -->
+  <section class="relative overflow-hidden bg-primary py-14 lg:py-16">
+    <div class="absolute inset-0 paper-texture opacity-50" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
+      <h2 class="font-serif text-3xl leading-tight text-primary-foreground sm:text-4xl">
+        It starts with one question.
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-base text-primary-foreground/85">
+        Choose a reading and get Doug's insights within 24 hours.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 rounded-full bg-primary-foreground px-7 py-3 text-base font-medium text-primary transition-colors hover:bg-primary-foreground/90"
+        >
+          Get Your Reading
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a
+          href="/checkout?product=one-question"
+          class="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-7 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+        >
+          Ask a Question — $20
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Base>

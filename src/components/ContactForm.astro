@@ -1,0 +1,276 @@
+---
+const WHATSAPP = "https://wa.me/17273089422";
+// Secret via env (see .env.example). Fallback keeps local build working.
+const web3formsKey =
+  import.meta.env.PUBLIC_WEB3FORMS_CONTACT_KEY || "dev-contact-placeholder";
+---
+
+<section id="contact" class="relative overflow-hidden bg-primary py-16 lg:py-20">
+  <div class="absolute inset-0 paper-texture opacity-50" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-5xl px-6 text-center lg:px-10">
+    <p class="mx-auto max-w-2xl font-serif text-2xl italic leading-snug text-primary-foreground sm:text-3xl">
+      "Part of me already knows the answer. I'm just not ready to face it alone."
+    </p>
+    <p class="mx-auto mt-6 max-w-xl text-base text-primary-foreground/85">
+      If that sounds familiar, this is the right place. Most people are surprised by how much clarity one honest conversation can bring.
+    </p>
+    <form
+      id="contact-form"
+      data-web3forms-key={web3formsKey}
+      class="mx-auto mt-14 max-w-2xl rounded-2xl border border-border bg-card p-8 text-left shadow-sm sm:p-10"
+    >
+      <h3 class="font-serif text-2xl text-ink sm:text-3xl">Reach out</h3>
+
+      <!-- Channel selector -->
+      <div class="mt-6">
+        <p class="text-sm font-medium text-foreground">How would you like Doug to reply?</p>
+        <div class="mt-3 flex gap-2">
+          <button
+            id="ch-whatsapp"
+            type="button"
+            aria-pressed="true"
+            class="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            WhatsApp
+          </button>
+          <button
+            id="ch-email"
+            type="button"
+            aria-pressed="false"
+            class="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/5"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-5">
+
+        <!-- Name -->
+        <div class="grid gap-2">
+          <label for="contact-name" class="text-sm font-medium text-foreground">
+            Name <span aria-hidden="true" class="text-primary">*</span>
+          </label>
+          <input
+            id="contact-name"
+            type="text"
+            name="name"
+            required
+            aria-required="true"
+            autocomplete="name"
+            placeholder="Your full name"
+            class="rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          />
+        </div>
+
+        <!-- Email — hidden when WhatsApp is selected; value always preserved on toggle -->
+        <div id="email-field-wrapper" class="grid gap-2" hidden aria-hidden="true">
+          <label for="contact-email" class="text-sm font-medium text-foreground">
+            Email <span aria-hidden="true" class="text-primary">*</span>
+          </label>
+          <input
+            id="contact-email"
+            type="email"
+            name="email"
+            autocomplete="email"
+            placeholder="your@email.com"
+            class="rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          />
+        </div>
+
+        <!-- Message -->
+        <div class="grid gap-2">
+          <label for="contact-message" class="text-sm font-medium text-foreground">
+            Your situation <span aria-hidden="true" class="text-primary">*</span>
+          </label>
+          <textarea
+            id="contact-message"
+            name="message"
+            required
+            aria-required="true"
+            rows="10"
+            placeholder="What's on your mind? The more detail, the better."
+            class="rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          ></textarea>
+        </div>
+
+        <!-- Honeypot — bots fill this in, real users don't -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <!-- Submit -->
+        <div id="contact-actions" class="mt-2">
+          <button
+            id="contact-submit"
+            type="submit"
+            class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50"
+          >
+            <svg id="contact-submit-icon-wa" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            <svg id="contact-submit-icon-email" class="h-4 w-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span id="contact-submit-label">Send via WhatsApp</span>
+          </button>
+        </div>
+
+        <div id="contact-success" hidden aria-live="polite" class="relative mt-2 rounded-xl border border-primary/20 bg-primary/5 px-4 py-4 text-sm text-muted-foreground">
+          <button
+            id="contact-dismiss"
+            type="button"
+            aria-label="Dismiss"
+            class="absolute right-3 top-3 rounded p-0.5 text-muted-foreground/40 transition-colors hover:text-muted-foreground"
+          >
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+          <p id="contact-success-msg"></p>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const WHATSAPP = "https://wa.me/17273089422";
+
+  const form         = document.getElementById("contact-form")          as HTMLFormElement;
+  const nameInput    = document.getElementById("contact-name")          as HTMLInputElement;
+  const emailInput   = document.getElementById("contact-email")         as HTMLInputElement;
+  const emailWrapper = document.getElementById("email-field-wrapper")   as HTMLElement;
+  const messageInput = document.getElementById("contact-message")       as HTMLTextAreaElement;
+  const submitBtn    = document.getElementById("contact-submit")        as HTMLButtonElement;
+  const submitLabel  = document.getElementById("contact-submit-label")  as HTMLElement;
+  const submitIconWA = document.getElementById("contact-submit-icon-wa")    as HTMLElement;
+  const submitIconEM = document.getElementById("contact-submit-icon-email") as HTMLElement;
+  const actions      = document.getElementById("contact-actions")       as HTMLElement;
+  const successBox   = document.getElementById("contact-success")       as HTMLElement;
+  const successMsg   = document.getElementById("contact-success-msg")   as HTMLElement;
+  const chWhatsapp   = document.getElementById("ch-whatsapp")           as HTMLButtonElement;
+  const chEmail      = document.getElementById("ch-email")              as HTMLButtonElement;
+
+  type Channel = "whatsapp" | "email";
+  let channel: Channel = "whatsapp";
+
+  const CLS_ACTIVE   = "flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors";
+  const CLS_INACTIVE = "flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/5";
+
+  function setChannel(ch: Channel) {
+    channel = ch;
+    const isWA = ch === "whatsapp";
+
+    // Clear any visible confirmation when switching channels
+    if (!successBox.hidden) {
+      successBox.hidden = true;
+      successBox.classList.remove("border-red-200", "bg-red-50");
+      actions.hidden = false;
+      submitBtn.disabled = false;
+    }
+
+    // Selector button styles
+    chWhatsapp.className = isWA ? CLS_ACTIVE : CLS_INACTIVE;
+    chWhatsapp.setAttribute("aria-pressed", String(isWA));
+    chEmail.className = isWA ? CLS_INACTIVE : CLS_ACTIVE;
+    chEmail.setAttribute("aria-pressed", String(!isWA));
+
+    // Show/hide email field — value is never cleared on toggle
+    emailWrapper.hidden = isWA;
+    emailWrapper.setAttribute("aria-hidden", String(isWA));
+    emailInput.toggleAttribute("required", !isWA);
+
+    // Submit button icon + label
+    submitIconWA.classList.toggle("hidden", !isWA);
+    submitIconEM.classList.toggle("hidden", isWA);
+    submitLabel.textContent = isWA ? "Send via WhatsApp" : "Send via Email";
+  }
+
+  chWhatsapp.addEventListener("click", () => setChannel("whatsapp"));
+  chEmail.addEventListener("click", () => setChannel("email"));
+
+  function showSuccess(via: Channel) {
+    actions.hidden = true;
+    successBox.hidden = false;
+    successMsg.textContent = via === "email"
+      ? "Your message is on its way. Doug reads everything personally and will be back to you within 24 hours."
+      : "Your message is ready in WhatsApp — just tap send. Doug reads every message himself and replies directly.";
+  }
+
+  document.getElementById("contact-dismiss")!.addEventListener("click", () => {
+    successBox.hidden = true;
+    successBox.classList.remove("border-red-200", "bg-red-50");
+    actions.hidden = false;
+    submitBtn.disabled = false;
+    submitLabel.textContent = channel === "whatsapp" ? "Send via WhatsApp" : "Send via Email";
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (channel === "whatsapp") {
+      // Validate only name + message for WhatsApp path
+      if (!nameInput.reportValidity() || !messageInput.reportValidity()) return;
+      const name    = nameInput.value.trim();
+      const message = messageInput.value.trim();
+      const body    = message + (name ? `\n\n— ${name}` : "");
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "form_submitted", form_type: "contact", form_method: "whatsapp" });
+      window.open(`${WHATSAPP}?text=${encodeURIComponent(body)}`, "_blank", "noopener,noreferrer");
+      showSuccess("whatsapp");
+    } else {
+      // Validate all fields (email is required when this path is active)
+      if (!form.reportValidity()) return;
+      const name      = nameInput.value.trim();
+      const email     = emailInput.value.trim();
+      const message   = messageInput.value.trim();
+      const accessKey = form.dataset.web3formsKey!;
+
+      submitBtn.disabled = true;
+      submitLabel.textContent = "Sending…";
+
+      try {
+        const res  = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: accessKey,
+            name,
+            email,
+            message,
+            subject: `Session inquiry — ${name || "New inquiry"}`,
+            botcheck: (form.elements.namedItem("botcheck") as HTMLInputElement).checked,
+          }),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: "form_submitted", form_type: "contact", form_method: "email" });
+          showSuccess("email");
+          form.reset();
+        } else {
+          submitLabel.textContent = "Send via Email";
+          submitBtn.disabled = false;
+          successBox.hidden = false;
+          successBox.classList.add("border-red-200", "bg-red-50");
+          successMsg.textContent = "Something went wrong. Please try again or reach out via WhatsApp.";
+        }
+      } catch {
+        submitLabel.textContent = "Send via Email";
+        submitBtn.disabled = false;
+        successBox.hidden = false;
+        successBox.classList.add("border-red-200", "bg-red-50");
+        successMsg.textContent = "Something went wrong. Please try again or reach out via WhatsApp.";
+      }
+    }
+  });
+
+  // Prefill from URL param (?prefill=...) — works for both channels
+  const urlPrefill = new URLSearchParams(window.location.search).get("prefill");
+  if (urlPrefill) messageInput.value = urlPrefill;
+
+  // Prefill from in-page event (clarity:prefill) — works for both channels
+  window.addEventListener("clarity:prefill", (e: Event) => {
+    const detail = (e as CustomEvent<string>).detail;
+    if (detail) {
+      messageInput.value = detail;
+      setTimeout(() => messageInput.focus({ preventScroll: true }), 600);
+    }
+  });
+</script>
